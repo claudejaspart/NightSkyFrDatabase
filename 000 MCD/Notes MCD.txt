@@ -1,0 +1,133 @@
+Home Astrophysics Low Observatory
+
+Liste des tables
+
+	Object
+	Category
+	Constellation
+	Images
+	Observation
+	Session
+	Equipment
+	ObservationList
+	ObservingSite
+	SkyQuality
+
+
+Description des tables
+
+	Table SkyObjects : listes des objets dans le ciel : etoiles, galaxies, amas, nebuleuses ...
+
+		dbId				primary key									integer
+		hipId				hipparcos catalog id 						varchar(255)
+		hdId				Henry Draper Catalog id 					varchar(255)
+		hrId 				harvard catalog id  						varchar(255)
+		glId 				gliese id 									varchar(255)
+		bfId	   			bayer/flamsteed id 							varchar(255)
+		rightAsc			right ascension 							varchar(50)
+		declination			declination 								varchar(50)
+		properName 			common name									varchar(255)	
+		typeId 				type of the object star, planet, ...									
+		distancePC 			distance in parsec 							numeric(,)
+		radialVelocity 		radial velocity 							numeric(,)
+		visualMagnitude 	visual magnitude 							numeric(6,4)
+		absoluteMagnitude 	apparent magnitude at 10 pc 				numeric(5,5)
+		spectralType 		spectral type 								varchar(10)
+		ColorIndex 			color index 								numeric(,)
+		constellationId 	constellation abbreviation 					varchar(5)
+		luminosity 			stars luminosity	 						numeric(,)
+		variableStarLabel	standard variable star designation  		varchar(20)
+		variableMinMag 		mag min for var stars 						numeric(6,4)
+		variableMaxMag 		mag max for var stars 						numeric(6,4)
+		Table category : type of stellar object
+		description 		description of the object 					varchar(1024)
+		primaryStarId 		id of primary star 							integer
+		companionStarId		id of companion star 						integer
+
+
+	Table Type
+
+		id
+		name
+		icon
+
+
+	Table image : liste des images utilisées (images stockées dans un répertoire)
+
+		id
+		url					chemin de l'image
+		description 		description de l'image
+		process 			description de la prise de vue
+		author 				auteur
+		date 				date de la prise de vue
+		type 				type d'image : dessin, chart , galerie, illustration
+
+	Table de liaison object <-> images (relation n - n)
+
+		id
+		id_stellar
+		id_image
+
+	Table de liaison images <-> equipements ?
+
+
+	Table constellation : liste des constellations (88 au total)
+
+		id
+		latin_name
+		proper_name
+		abbreviation
+		image
+
+	Table observation : liste des observations effectuées
+
+		id
+		object_id
+		start_date
+		end_date
+		author
+		observationSite
+		SkyQuality
+		Session
+
+	Table session : liste des sessions d'observations
+
+		id
+		session_name
+		start_date
+		end_date
+		site
+		number_observations 	
+		faintest_star			magnitude of faintest star at zenith
+
+	Table ObservationList
+
+		id
+		stellar_id
+		list_name
+
+	Table ObservationSite
+
+		id
+		name
+		adress
+		city
+		postal code
+		gps coords
+
+	Table SkyQuality
+
+		id
+		seeing_id
+		mpsa
+
+	Table Seeing  : liste de valeurs decrivant la qualité du ciel
+
+		id
+		description 	description
+
+
+
+
+
+
