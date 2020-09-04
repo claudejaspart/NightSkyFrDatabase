@@ -51,9 +51,9 @@ create Table Images
 	id 						SERIAL PRIMARY KEY,
 	filename				text,
 	title					text,
-	process					text,
+	description				text,
 	author 					varchar(255),
-	dateTaken 				TIMESTAMP WITH TIME ZONE,			
+	timestamp				TIMESTAMP WITH TIME ZONE,			
 	ImageType_id			integer
 );
 
@@ -141,7 +141,7 @@ create Table Icons
 create Table Telescopes
 (
 	id 						SERIAL PRIMARY KEY,
-	name 					varchar(255),
+	name 					varchar(255) UNIQUE,
 	aperture				integer,
 	focal					integer,
 	fdratio					numeric,
