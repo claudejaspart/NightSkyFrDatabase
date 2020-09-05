@@ -48,9 +48,10 @@ create Table Constellations
 
 create Table Images
 (
-	id 						SERIAL PRIMARY KEY,
+	id 					SERIAL PRIMARY KEY,
 	filename				text,
-	title					text,
+	path					varchar(1024),
+	title					varchar(255),
 	description				text,
 	author 					varchar(255),
 	timestamp				TIMESTAMP WITH TIME ZONE,			
