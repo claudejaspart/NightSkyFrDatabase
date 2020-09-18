@@ -151,6 +151,17 @@ create Table Telescopes
 	Equipment_id 			integer
 );
 
+create Table Eyepieces
+(
+	id 						SERIAL PRIMARY KEY,
+	name 					varchar(255) UNIQUE,
+	focal					integer,
+	afov						numeric,
+	manufacturer 			varchar(255),
+	description 			varchar(1024),
+	Equipment_id 			integer
+);
+
 -- table de liaisons
 
 create Table ObservationList_has_SkyObjects
