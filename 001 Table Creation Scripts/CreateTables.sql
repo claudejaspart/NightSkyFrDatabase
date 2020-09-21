@@ -156,7 +156,19 @@ create Table Eyepieces
 	id 						SERIAL PRIMARY KEY,
 	name 					varchar(255) UNIQUE,
 	focal					integer,
-	afov						numeric,
+	afov					numeric,
+	manufacturer 			varchar(255),
+	description 			varchar(1024),
+	Equipment_id 			integer
+);
+
+create Table Binoculars
+(
+	id 						SERIAL PRIMARY KEY,
+	name 					varchar(255) UNIQUE,
+	aperture				integer,
+	magnification 			integer,
+	afov 					numeric,
 	manufacturer 			varchar(255),
 	description 			varchar(1024),
 	Equipment_id 			integer
@@ -197,6 +209,18 @@ create Table Observation_has_Equipment
 create Table Telescope_has_Images
 (
 	Telescope_id 			integer,
+	Image_id 			integer
+);
+
+create Table Eyepiece_has_Images
+(
+	Eyepiece_id 			integer,
+	Image_id 			integer
+);
+
+create Table Binocular_has_Images
+(
+	Binocular_id 		integer,
 	Image_id 			integer
 );
 
