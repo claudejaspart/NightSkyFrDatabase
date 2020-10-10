@@ -37,7 +37,7 @@ create Table MessierObjects
 	season 			 		varchar(50),
 	constellation 			varchar(255),
 	constellationAbbr	   	varchar(5),
-	magnitude 				varchar(10),
+	magnitude 				integer,
 	rightAscension			varchar(50),
 	declination				varchar(50),
 	distanceLY 				varchar(50),	

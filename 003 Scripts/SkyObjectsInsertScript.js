@@ -90,7 +90,7 @@ while (id < numberLines)
                         + ",'" + messierData[season]                             + "'"
                         + ",'" + messierData[constellation]                     + "'"
                         + ",'" + messierData[constellationAbbr]                  + "'"
-                        + ",'" + messierData[magnitude]                          + "'"
+                        + "," + messierData[magnitude]                          + ""
                         + ",'" + messierData[rightAscension]                     + "'"
                         + ",'" + messierData[declination]                        + "'"
                         + ",'" + messierData[distanceLY]                         + "'"
