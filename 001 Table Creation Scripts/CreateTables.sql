@@ -1,12 +1,7 @@
--- Suppression des tables
-
-drop table SkyObjects;
-
-
 
 -- Tables principales
 
-create Table SkyObjects
+create Table StarObjects
 (
 	id						SERIAL PRIMARY KEY,
 	hipId					varchar(255),
@@ -33,6 +28,25 @@ create Table SkyObjects
 	ObjectType_id 			integer
 );
 
+create Table MessierObjects
+(
+	id						SERIAL PRIMARY KEY,
+	name					varchar(5),
+	ngc						varchar(10),
+	objectType 			 	varchar(50),
+	season 			 		varchar(50),
+	constellation 			varchar(255),
+	constellationAbbr	   	varchar(5),
+	magnitude 				varchar(10),
+	rightAscension			varchar(50),
+	declination				varchar(50),
+	distanceLY 				varchar(50),	
+	apparentSizeArcSec 		varchar(50),						
+	discoverer 				varchar(50),
+	discoveryYear 			varchar(5),
+	description 			text
+);
+
 
 
 create Table Constellations
@@ -48,7 +62,7 @@ create Table Constellations
 
 create Table Images
 (
-	id 					SERIAL PRIMARY KEY,
+	id 						SERIAL PRIMARY KEY,
 	filename				text,
 	path					varchar(1024),
 	title					varchar(255),
@@ -116,6 +130,7 @@ create Table EquipmentType
 	type 					varchar(255),
 	iconId					integer
 );
+
 
 create Table Seeing
 (
@@ -194,6 +209,12 @@ create Table SkyObject_has_Images
 	Image_id 				integer
 );
 
+create Table MessierObject_has_Images
+(
+	MessierObject_id 		integer,
+	Image_id 				integer
+);
+
 create Table SkyObject_has_Observations
 (
 	SkyObject_id 			integer,
@@ -229,7 +250,7 @@ create Table Binoculars_has_Images
 
 create Table ImageType
 (
-	id 						integer				SERIAL PRIMARY KEY,
+	id 						SERIAL PRIMARY KEY,
 	name					varchar(255),
 	iconId					integer
 );
@@ -237,15 +258,11 @@ create Table ImageType
 
 create Table ObjectType
 (
-	id 						integer				SERIAL PRIMARY KEY,
+	id 						SERIAL PRIMARY KEY,
 	name					varchar(255),
 	iconId					integer
 );
 
-create Table EquipmentType
-(
-	id 						integer				SERIAL PRIMARY KEY,
-	name					varchar(255),
-	iconId					integer
-);
+
+
 

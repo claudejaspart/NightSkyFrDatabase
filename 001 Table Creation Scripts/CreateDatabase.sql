@@ -1,8 +1,8 @@
 -- Database: HALO
 
--- DROP DATABASE "HALO";
+-- DROP DATABASE "NIGHTSKYFR";
 
-CREATE DATABASE "HALO"
+CREATE DATABASE "NIGHTSKYFR"
     WITH 
     OWNER = postgres
     ENCODING = 'UTF8'
@@ -11,5 +11,5 @@ CREATE DATABASE "HALO"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-COMMENT ON DATABASE "HALO"
-    IS 'Home Astrophysics Low Observatory';
+COMMENT ON DATABASE "NIGHTSKYFR"
+    IS 'Home Astrophysics Observatory';
