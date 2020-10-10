@@ -3,26 +3,23 @@ const fs = require('fs');
 LineReaderSync = require("line-reader-sync");
 
 // nom des fichiers
-const dataFile = './files/messier.csv';
-const sqlFileScript = './files/insertMessierObjects';
+const dataFile = './files/ngc.csv';
+const sqlFileScript = './files/insertNGCObjects';
 const sqlFileExtension = '.sql';
 
 
 // Liste des index des champs qui nous intéressent
-const messier = 0;
-const ngc = 1;
-const objectType = 2;
-const season = 3;
-const magnitude = 4;
-const constellation = 5;
-const rightAscension = 6;
-const declination = 7;
-const distanceLY = 8;
-const apparentSize = 9;
-const discoverer = 10;
-const discoveryYear = 11;
-const constellationAbbr = 12;
-const description = 13;
+const name = 0;
+const objectType = 1;
+const magnitude = 8;
+const constellationAbbr = 4;
+const rightAscension = 2;
+const declination = 3;
+const majax = 5;
+const minax = 6;
+const posang = 7;
+const NGC = 9;
+const commonName = 11;
 
 
 // taille du paquet
@@ -60,7 +57,7 @@ while (id < numberLines)
         var fileHandle = openFile(sqlFileScript + numeroFichier + sqlFileExtension);
 
         // debut de la requête d'insertion
-        var headerQueryString =  'insert into MessierObjects (id, name, ngc, objectType, season, constellation, constellationAbbr, magnitude, rightAscension, declination, distanceLY, apparentSizeArcSec, discoverer, discoveryYear, description) \nvalues\n';
+        var headerQueryString =  'insert into NGCObjects (id, name, objectType, magnitude, constellationAbbr, rightAscension, declination, majAc, minAx, posAng, NGC, commonName, description) \nvalues\n';
         // on sauvegarde dans le fichier script sql
         saveData(fileHandle,headerQueryString);
 
@@ -68,35 +65,33 @@ while (id < numberLines)
     }
 
     // on ne prend pas en compte la première ligne
-    if (id > 0)
+    if (id >= 5616)
     {
         // récupération des données sous forme de tableau de valeurs
         let messierData = line.split(';');
 
         // on traite chaque champ pour le mettre à null si valeur vide
-        // for (let i=0; i<messierData.length;i++)
-        // {
-        //     if (messierData[i])
-        //         messierData[i] = (messierData[i].toString()).replace("'", "''");
-        //     else
-        //         messierData[i] = "null";
-        // }
+        for (let i=0; i<messierData.length;i++)
+        {
+            if (messierData[i])
+                messierData[i] = (messierData[i].toString()).replace("'", "''");
+            else
+                messierData[i] = "null";
+        }
 
         // construction de la ligne de données
         subQueryString = "(" + id.toString()
-                        + ",'" + messierData[messier]                           + "'" 
-                        + ",'" + messierData[ngc]                                + "'"
+                        + ",'" + messierData[name]                               + "'" 
                         + ",'" + messierData[objectType]                         + "'"
-                        + ",'" + messierData[season]                             + "'"
-                        + ",'" + messierData[constellation]                     + "'"
+                        + "," +  messierData[magnitude]                           + ""
                         + ",'" + messierData[constellationAbbr]                  + "'"
-                        + "," + messierData[magnitude]                          + ""
                         + ",'" + messierData[rightAscension]                     + "'"
                         + ",'" + messierData[declination]                        + "'"
-                        + ",'" + messierData[distanceLY]                         + "'"
-                        + ",'" + messierData[apparentSize]                       + "'"
-                        + ",'" + messierData[discoverer]                         + "'"
-                        + ",'" + messierData[discoveryYear]                      + "'"
+                        + ",'" + messierData[majax]                         + "'"
+                        + ",'" + messierData[minax]                       + "'"
+                        + ",'" + messierData[posang]                         + "'"
+                        + ",'" + messierData[NGC]                      + "'"
+                        + ",'" + ""                      + "'"
                         + ",'" + ""                                              + "')"                                
 
 
